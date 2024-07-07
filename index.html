@@ -45,8 +45,49 @@
             font-weight: bold;
             color: #995c00;
         }
+                /* Pop-up styles */
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+        }
+        .popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fffaf0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .popup button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #ffa64d;
+            border: none;
+            border-radius: 5px;
+            color: #4a4a4a;
+            font-weight: bold;
+            cursor: pointer;
+        }
     </style>
-
+    </head>
+<body>
+<div class="popup-container" id="popupContainer">
+        <div class="popup">
+            <h2>ברוכים הבאים</h2>
+<p>זוהי <strong>טיוטת</strong> טבלת הצעת המחיר עבור Microsoft Dynamics 365 Sales.</p>
+            <button onclick="closePopup()">הבנתי</button>
+        </div>
+    </div>
 <table dir="rtl">
     <tr>
         <th>מספר סידורי</th>
@@ -415,6 +456,17 @@
         <td>כולל שימוש ב-Power Apps לממשקים מורכבים ופיתוח קומפוננטות מותאמות אישית</td>
     </tr>
 </table>
+    <script>
+        window.onload = function() {
+            document.getElementById('popupContainer').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        };
+
+        function closePopup() {
+            document.getElementById('popupContainer').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Enable scrolling
+        }
+    </script>
 </body>
 </html>
 
